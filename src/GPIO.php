@@ -6,7 +6,7 @@ namespace ChickenTikkaMasla\GPIO;
  * Class GPIO
  * @package ChickenTikkaMasla\GPIO
  */
-class GPIO
+Abstract class GPIO
 {
     /**
      * @var int
@@ -23,19 +23,57 @@ class GPIO
      */
     protected static $max = 1023;
 
-    private $g = '-1';
+    /**
+     * @var array
+     */
+    protected $options = [];
 
     /**
-     * PWM constructor.
+     * @var array
+     */
+    private $availableOptions = [
+        'g',
+        '1',
+        'p',
+        'x',
+    ];
+
+    private $mode = '';
+
+    /**
+     * GPIO constructor.
      * @param $pin
      * @param string $defaultState
+     * @param array $options
      */
-    public function __construct($pin, $defaultState = 'OFF', $g = false)
+    public function __construct($pin, $defaultState = 'OFF', $options = [])
     {
-        $this->g = ($g) ? '-g' : '-1';
         $this->pin = $pin;
+        $this->mode = $this->getMode();
+        $this->setOptions($options);
         $this->executeMode();
         $this->set($defaultState);
+    }
+
+    /**
+     * @param $options
+     */
+    protected function setOptions(Array $options = [])
+    {
+        foreach($options as $option)
+        {
+            if (in_array($option, $this->availableOptions)) {
+                $this->options[] = '-'.$option;
+            }
+        }
+    }
+
+    /**
+     * @return string
+     */
+    protected function getMode()
+    {
+        return get_class(static::class);
     }
 
     /**
@@ -46,9 +84,12 @@ class GPIO
         return $this->lastValue;
     }
 
+    /**
+     * @return string
+     */
     public function get()
     {
-        return $this->lastValue = $this->read();
+        return $this->lastValue = $this->execute(true);
     }
 
     /**
@@ -61,31 +102,24 @@ class GPIO
         if (strtoupper($value) == 'OFF') $value = 0;
 
         $this->lastValue = $value;
-        return $this->write();
+        return $this->execute();
+    }
+
+    /**
+     * @param bool $read
+     * @return string
+     */
+    protected function execute($read = false)
+    {
+        return shell_exec('gpio '.$this->mode.'  '.$this->pin.' '.($read) ? '' : $this->lastValue);
     }
 
     /**
      * @return string
      */
-    private function write()
+    protected function executeMode()
     {
-        return shell_exec('gpio '.$this->g.' pwm '.$this->pin.' '.$this->lastValue);
-    }
-
-    /**
-     * @return string
-     */
-    private function read()
-    {
-        return shell_exec('gpio read '.$this->pin);
-    }
-
-    /**
-     * @return string
-     */
-    private function executeMode()
-    {
-        return shell_exec('gpio '.$this->g.' mode '.$this->pin.' pwm');
+        return shell_exec('gpio '.implode(' ', $this->options).' mode '.$this->pin.' '.$this->mode);
     }
 
     public function __destruct()
