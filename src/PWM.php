@@ -31,6 +31,7 @@ class PWM
     public function __construct($pin, $defaultState = 'OFF')
     {
         $this->pin = $pin;
+        $this->executeMode();
         $this->set($defaultState);
     }
 
@@ -60,7 +61,15 @@ class PWM
      */
     private function execute()
     {
-        return shell_exec('');
+        return shell_exec('gpio -1 pwm '.$this->pin.' '.$this->lastValue);
+    }
+
+    /**
+     * @return string
+     */
+    private function executeMode()
+    {
+        return shell_exec('gpio -1 mode '.$this->pin.' pwm');
     }
 
 }
