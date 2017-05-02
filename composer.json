@@ -1,0 +1,16 @@
+{
+    "name": "chickentikkamasala/pwm",
+    "type": "project",
+    "authors": [
+        {
+            "name": "ashleigh simonelli",
+            "email": "ashleighsimonelli@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-0": {
+            "ChickenTikkaMasala\\PWM": "src/"
+        }
+    }
+}
