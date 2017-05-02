@@ -23,13 +23,16 @@ class PWM
      */
     protected static $max = 1023;
 
+    private $g = '-1';
+
     /**
      * PWM constructor.
      * @param $pin
      * @param string $defaultState
      */
-    public function __construct($pin, $defaultState = 'OFF')
+    public function __construct($pin, $defaultState = 'OFF', $g = false)
     {
+        $this->g = ($g) ? '-g' : '-1';
         $this->pin = $pin;
         $this->executeMode();
         $this->set($defaultState);
@@ -38,9 +41,14 @@ class PWM
     /**
      * @return int
      */
-    public function get()
+    public function getPrevious()
     {
         return $this->lastValue;
+    }
+
+    public function get()
+    {
+        return $this->lastValue = $this->read();
     }
 
     /**
@@ -53,15 +61,23 @@ class PWM
         if (strtoupper($value) == 'OFF') $value = 0;
 
         $this->lastValue = $value;
-        return $this->execute();
+        return $this->write();
     }
 
     /**
      * @return string
      */
-    private function execute()
+    private function write()
     {
-        return shell_exec('gpio -1 pwm '.$this->pin.' '.$this->lastValue);
+        return shell_exec('gpio '.$this->g.' pwm '.$this->pin.' '.$this->lastValue);
+    }
+
+    /**
+     * @return string
+     */
+    private function read()
+    {
+        return shell_exec('gpio read '.$this->pin);
     }
 
     /**
@@ -69,7 +85,17 @@ class PWM
      */
     private function executeMode()
     {
-        return shell_exec('gpio -1 mode '.$this->pin.' pwm');
+        return shell_exec('gpio '.$this->g.' mode '.$this->pin.' pwm');
+    }
+
+    public function __destruct()
+    {
+        $this->set();
+    }
+
+    public function __toString()
+    {
+        return (string)$this->lastValue;
     }
 
 }

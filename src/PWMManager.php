@@ -22,8 +22,11 @@ class PWMManager
         foreach($pins as $name => $data)
         {
             //could use user_func_array
-            if (isset($data['pin']) && isset($data['defaultState'])) $this->create($name, $data['pin'], $data['defaultState']);
-            elseif (isset($data['pin'])) $this->create($name, $data['pin']);
+            if (!isset($data['pin'])) {
+                throw new \Exception('Please add a pin for '.$name);
+            }
+
+            $this->create($name, $data['pin'], isset($data['defaultState']) ? $data['defaultState'] : 'OFF', isset($data['g']) ? $data['g'] : false);
         }
     }
 
@@ -77,6 +80,13 @@ class PWMManager
     {
         if ($this->exists($parameter)) {
             return $this->pins[$parameter]->set($value);
+        }
+    }
+
+    public function __destruct()
+    {
+        foreach($this->pins as $pin) {
+            $pin->__destruct();
         }
     }
 }
