@@ -1,12 +1,12 @@
 <?php
 
-namespace ChickenTikkaMasla\PWM;
+namespace ChickenTikkaMasla\GPIO;
 
 /**
- * Class PWM
- * @package ChickenTikkaMasla\PWM
+ * Class GPIO
+ * @package ChickenTikkaMasla\GPIO
  */
-class PWM
+class GPIO
 {
     /**
      * @var int

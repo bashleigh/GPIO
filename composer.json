@@ -1,5 +1,5 @@
 {
-    "name": "chickentikkamasala/pwm",
+    "name": "chickentikkamasala/gpio",
     "type": "project",
     "authors": [
         {
@@ -10,7 +10,7 @@
     "minimum-stability": "stable",
     "autoload": {
         "psr-0": {
-            "ChickenTikkaMasala\\PWM": "src/"
+            "ChickenTikkaMasala\\GPIO": "src/"
         }
     }
 }

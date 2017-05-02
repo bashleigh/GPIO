@@ -1,12 +1,12 @@
 <?php
 
-namespace ChickenTikkaMasla\PWM;
+namespace ChickenTikkaMasla\GPIO;
 
 /**
  * Class PWMManager
- * @package ChickenTikkaMasla\PWM
+ * @package ChickenTikkaMasla\GPIO
  */
-class PWMManager
+class GPIOManager
 {
     /**
      * @var array
@@ -14,8 +14,9 @@ class PWMManager
     public $pins = [];
 
     /**
-     * PWMManager constructor.
+     * GPIOManager constructor.
      * @param array $pins
+     * @throws \Exception
      */
     public function __construct($pins = [])
     {
@@ -26,7 +27,7 @@ class PWMManager
                 throw new \Exception('Please add a pin for '.$name);
             }
 
-            $this->create($name, $data['pin'], isset($data['defaultState']) ? $data['defaultState'] : 'OFF', isset($data['g']) ? $data['g'] : false);
+            call_user_func_array([$this, 'create'], [$data]);
         }
     }
 
@@ -46,7 +47,12 @@ class PWMManager
      */
     public function create($name, $pin, $defaultState = 'OFF')
     {
-        $this->pin[$name] = new PWM($pin, $defaultState);
+        $this->add($name, new GPIO($pin, $defaultState));
+    }
+
+    public function add($name, GPIO $gpio)
+    {
+        $this->pins[$name] = $gpio;
     }
 
     /**
