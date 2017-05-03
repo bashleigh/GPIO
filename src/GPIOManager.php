@@ -35,11 +35,10 @@ class GPIOManager
      * @param array $pins
      * @throws \Exception
      */
-    public function __construct($pins = [])
+    public function __construct(Array $pins = [])
     {
         foreach($pins as $name => $data)
         {
-            //could use user_func_array
             if (!isset($data['pin'])) {
                 throw new \Exception('Please add a pin for '.$name);
             } elseif (!isset($data['mode'])) {

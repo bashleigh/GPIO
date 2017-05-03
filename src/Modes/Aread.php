@@ -10,8 +10,20 @@ use ChickenTikkaMasla\GPIO\GPIO;
  */
 class Aread extends GPIO
 {
+    /**
+     * @param int $value
+     * @return int
+     */
     public function set($value = 0)
     {
         return $this->lastValue = $value;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMethod()
+    {
+        return 'in';
     }
 }

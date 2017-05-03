@@ -50,6 +50,7 @@ Abstract class GPIO
     {
         $this->pin = $pin;
         $this->mode = $this->getMode();
+        $this->method = $this->getMethod();
         $this->setOptions($options);
         $this->executeMode();
         $this->set($defaultState);
@@ -75,6 +76,8 @@ Abstract class GPIO
     {
         return get_class(static::class);
     }
+
+    abstract public function getMethod();
 
     /**
      * @return int

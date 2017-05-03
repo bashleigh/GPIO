@@ -10,9 +10,21 @@ use ChickenTikkaMasla\GPIO\GPIO;
  */
 class Awrite extends GPIO
 {
+    /**
+     * @param int $value
+     * @return int
+     */
     public function set($value = 0)
     {
         $this->lastValue = $value;
         return $value;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMethod()
+    {
+        return 'out';
     }
 }
