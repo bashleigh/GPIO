@@ -25,7 +25,7 @@ Installing into laravel
 Publish the vendor to get the config files
 
 ```bash
-php artisan vendor:publish 
+php artisan vendor:publish --provider="ChickenTikkaMasala\GPIO\Bridge\Laravel\GPIOServiceProvider"
 ```
 Example setup
 ```php
