@@ -57,7 +57,7 @@ class GPIOManager
      * @param $name
      * @param GPIO $mode
      */
-    public function registermode($name, GPIO $mode)
+    public function registerMode($name, GPIO $mode)
     {
         $this->modes[$name] = $mode;
     }

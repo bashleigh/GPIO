@@ -20,6 +20,18 @@ return [
 
     ],
 
+    /*
+     * modes to be registered with GPIO manager on boot
+     */
+    'modes' => [
+
+//        'LED' => \App\GPIO\Modes\LED::class,
+
+    ],
+
+    /**
+     * GPIO hardware environment setup
+     */
     'pins' => [
 
 //        'redled' => [
@@ -29,6 +41,5 @@ return [
 //        ],
 
     ],
-
 
 ];
