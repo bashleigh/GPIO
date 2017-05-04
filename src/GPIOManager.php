@@ -27,7 +27,7 @@ class GPIOManager
         'awrite' => Awrite::class,
         'pwm' => PWM::class,
         'read' => Read::class,
-        'write' => Write::class
+        'write' => Write::class,
     ];
 
     /**
@@ -63,12 +63,12 @@ class GPIOManager
      * @param string $defaultState
      * @throws GPIOModeNotFound
      */
-    public function create($name, $pin, $mode = 'awrite', $defaultState = 'OFF')
+    public function create($name, $pin, $mode = 'awrite', $defaultState = 'OFF', Array $options = [])
     {
         if (!in_array($mode, array_keys($this->modes))) {
             throw new GPIOModeNotFound($name);
         }
-        $this->add($name, new $this->modes[$mode]($pin, $defaultState));
+        $this->add($name, new $this->modes[$mode]($pin, $defaultState, $options));
     }
 
     public function add($name, GPIO $gpio)

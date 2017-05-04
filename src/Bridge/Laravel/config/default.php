@@ -13,10 +13,15 @@ return [
     | See example below
     */
 
-//    'redled' => [
-//        'pin' => 1,
-//        'mode' => 'write',
-//        'defaultValue' => 0,
-//    ],
+    'pins' => [
+
+//        'redled' => [
+//            'pin' => 1,
+//            'mode' => 'write',
+//            'defaultValue' => 0,
+//        ],
+
+    ],
+
 
 ];
