@@ -38,7 +38,15 @@ Abstract class GPIO
         'x',
     ];
 
+    /**
+     * @var string
+     */
     private $mode = '';
+
+    /**
+     * @var string
+     */
+    private $method = '';
 
     /**
      * GPIO constructor.
@@ -122,7 +130,7 @@ Abstract class GPIO
      */
     protected function executeMode()
     {
-        return shell_exec('gpio '.implode(' ', $this->options).' mode '.$this->pin.' '.$this->mode);
+        return shell_exec('gpio '.implode(' ', $this->options).' mode '.$this->pin.' '.$this->method);
     }
 
     public function __destruct()
