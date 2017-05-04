@@ -41,8 +41,6 @@ class GPIOManager
         {
             if (!isset($data['pin'])) {
                 throw new \Exception('Please add a pin for '.$name);
-            } elseif (!isset($data['mode'])) {
-                throw new \Exception('Please provide a mode for '.$name);
             }
 
             call_user_func_array([$this, 'create'], [$data]);
