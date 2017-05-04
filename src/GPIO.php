@@ -157,7 +157,7 @@ Abstract class GPIO
             'mode' => $this->mode,
             'method' => $this->method,
             'value' => $this->getPrevious(),
-            'options' => $this->options,
+            'options' => implode(', ', $this->options),
         ];
     }
 
