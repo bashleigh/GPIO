@@ -8,6 +8,8 @@ use ChickenTikkaMasala\GPIO\Bridge\Laravel\Commands\GPIOManagerList;
 use ChickenTikkaMasala\GPIO\Bridge\Laravel\Commands\GPIOManagerSet;
 use ChickenTikkaMasala\GPIO\GPIOManager;
 
+use Illuminate\Support\ServiceProvider;
+
 /**
  * Class GPIOServiceProvider
  * @package ChickenTikkaMasala\GPIO\Bridge\Laravel
