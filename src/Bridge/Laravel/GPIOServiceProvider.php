@@ -35,7 +35,7 @@ class GPIOServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'config/default.php' => config_path('gpio.php'),
+            __DIR__.'/config/default.php' => config_path('gpio.php'),
         ]);
 
         $this->commands([

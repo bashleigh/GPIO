@@ -14,7 +14,7 @@ class GPIOManagerGet extends Command
     /**
      * @var string
      */
-    public $signature = 'gpiomanager:get {name}';
+    public $signature = 'gpio:get {name}';
 
     /**
      * @var string

@@ -10,7 +10,7 @@ class GPIOManagerList extends Command
     /**
      * @var string
      */
-    public $signature = 'gpiomanager:list';
+    public $signature = 'gpio:list';
 
     /**
      * @var string

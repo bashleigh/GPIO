@@ -14,7 +14,7 @@ class GPIOManagerFunction extends Command
     /**
      * @var string
      */
-    public $signature = 'gpiomanager:function {name} {function}';
+    public $signature = 'gpio:function {name} {function}';
 
     /**
      * @var string

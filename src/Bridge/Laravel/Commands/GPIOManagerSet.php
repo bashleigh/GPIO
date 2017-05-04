@@ -14,7 +14,7 @@ class GPIOManagerSet extends Command
     /**
      * @var string
      */
-    public $signature = 'gpiomanager:set {name} {value}';
+    public $signature = 'gpio:set {name} {value}';
 
     /**
      * @var string
