@@ -2,6 +2,8 @@
 
 namespace ChickenTikkaMasala\GPIO;
 
+use ChickenTikkaMasala\GPIO\Exception\GPIOCommandNotFoundException;
+
 /**
  * Class GPIO
  * @package ChickenTikkaMasala\GPIO
@@ -119,18 +121,33 @@ Abstract class GPIO
     /**
      * @param bool $read
      * @return string
+     * @throws GPIOCommandNotFoundException
      */
     protected function execute($read = false)
     {
-        return shell_exec('gpio '.$this->mode.'  '.$this->pin.' '.($read) ? '' : $this->lastValue);
+        $value = shell_exec('gpio ' . $this->mode . '  ' . $this->pin . ' ' . ($read) ? '' : $this->lastValue);
+
+        if (preg_match("/command\snot\sfound/", $value)) {
+            throw new GPIOCommandNotFoundException();
+        }
+
+        return $value;
+
     }
 
     /**
      * @return string
+     * @throws GPIOCommandNotFoundException
      */
     protected function executeMode()
     {
-        return shell_exec('gpio '.implode(' ', $this->options).' mode '.$this->pin.' '.$this->method);
+        $value = shell_exec('gpio '.implode(' ', $this->options).' mode '.$this->pin.' '.$this->method);
+
+        if (preg_match("/command\snot\sfound/", $value)) {
+            throw new GPIOCommandNotFoundException();
+        }
+
+        return $value;
     }
 
     public function __destruct()
