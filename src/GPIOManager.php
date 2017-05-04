@@ -30,13 +30,19 @@ class GPIOManager
         'write' => Write::class,
     ];
 
+    public $options = [
+        'default_mode' => 'awrite',
+    ];
+
     /**
      * GPIOManager constructor.
      * @param array $pins
      * @throws \Exception
      */
-    public function __construct(Array $pins = [])
+    public function __construct(Array $pins = [], Array $options = [])
     {
+        $this->options = array_merge($this->options, $options);
+
         foreach($pins as $name => $data)
         {
             if (!isset($data['pin'])) {
@@ -45,6 +51,15 @@ class GPIOManager
 
             call_user_func_array([$this, 'create'], [$data]);
         }
+    }
+
+    /**
+     * @param $name
+     * @param GPIO $mode
+     */
+    public function registermode($name, GPIO $mode)
+    {
+        $this->modes[$name] = $mode;
     }
 
     /**
@@ -59,12 +74,16 @@ class GPIOManager
     /**
      * @param $name
      * @param $pin
-     * @param string $mode
+     * @param null $mode
      * @param string $defaultState
+     * @param array $options
      * @throws GPIOModeNotFound
      */
-    public function create($name, $pin, $mode = 'awrite', $defaultState = 'OFF', Array $options = [])
+    public function create($name, $pin, $mode = null, $defaultState = 'OFF', Array $options = [])
     {
+
+        $mode = $mode !== null ? $mode : $this->options['default_mode'];
+
         if (!in_array($mode, array_keys($this->modes))) {
             throw new GPIOModeNotFound($name);
         }

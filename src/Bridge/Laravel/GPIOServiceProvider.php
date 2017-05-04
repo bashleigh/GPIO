@@ -16,7 +16,7 @@ class GPIOServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(GPIOManager::class, function($app) {
-            return new GPIOManager(config('gpio.pins'));
+            return new GPIOManager(config('gpio.pins'), config('gpio.settings'));
         });
     }
 

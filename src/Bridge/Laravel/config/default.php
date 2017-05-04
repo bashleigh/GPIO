@@ -13,6 +13,13 @@ return [
     | See example below
     */
 
+    'settings' => [
+        //default mode for pins when mode is undefined 
+
+//        'default_mode' => 'pwm',
+
+    ],
+
     'pins' => [
 
 //        'redled' => [
