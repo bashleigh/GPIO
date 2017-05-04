@@ -152,6 +152,17 @@ class GPIOManager
         return $arr;
     }
 
+    public function getDetailedList()
+    {
+        $arr = [];
+
+        foreach ($this->pins as $name => $pin) {
+            $arr[] = array_merge($pin, ['name' => $name]);
+        }
+
+        return $arr;
+    }
+
     /**
      * @return string
      */

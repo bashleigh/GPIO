@@ -150,6 +150,17 @@ Abstract class GPIO
         return $value;
     }
 
+    public function getDetails()
+    {
+        return [
+            'pin' => $this->pin,
+            'mode' => $this->mode,
+            'method' => $this->method,
+            'value' => $this->getPrevious(),
+            'options' => $this->options,
+        ];
+    }
+
     public function __destruct()
     {
         $this->set();
