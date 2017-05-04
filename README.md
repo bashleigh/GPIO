@@ -1,6 +1,6 @@
-#GPIO manager
+# GPIO manager
 
-requires testing
+> requires testing
 
 The GPIO manager is designed to house your hardware environment setup and allow you to manager and interact with the hardware. 
 
@@ -10,7 +10,7 @@ The GPIO class requires gpio to be installed
 
 Installing into laravel 
 
-```$xslt
+```php
 'providers' => [
 
     ...
@@ -24,11 +24,11 @@ Installing into laravel
 
 Publish the vendor to get the config files
 
-```$xslt
+```bash
 php artisan vendor:publish 
 ```
 Example setup
-```$xslt
+```php
     'pins' => [
         'redled' => [
             'pin' => 1,
@@ -36,24 +36,24 @@ Example setup
         ],
     ],
 ```
-###Testing with the command line 
+### Testing with the command line 
 
 Turn the redled on pin 1 on full
 
-```$xslt
+```bash
 php artisan gpio:set redled 1023
 ```
 List all GPIO pin input from your setup
-```$xslt
+```bash
 php artisan gpio:list
 ```
 This will output an array of all the GPIOs setup with the manager
 
-###Creating a new connection
+### Creating a new connection
 
 Alternatively to config setup you can call the create function to add new connections. 
 
-```$xslt
+```php
     public function index(GPIOManager $manager) 
     {
         $manager->create('greenled', 2);
@@ -63,7 +63,7 @@ Alternatively to config setup you can call the create function to add new connec
 
 The manager maps your named connections as parameters as shown above. When reading pins we canuse the same method with the parameters to get the result 
 
-```$xslt
+```php
     public function index(GPIOManager $manager)
     {
         //create an analog sensor
@@ -76,13 +76,13 @@ The manager maps your named connections as parameters as shown above. When readi
 
 Mapping also applies to the values 'OFF' and 'ON' where PWM expects 1023 as max and write expect 1. 'OFF' will equal to 0.
 
-###Custom GPIO classes 
+### Custom GPIO classes 
 
 You can however add your own GPIO modes/classes in 2 ways. 
 
 First being 
 
-```$xslt
+```php
 <?php 
 
 use ChickenTikkaMasala\GPIO\GPIO;
@@ -102,7 +102,7 @@ class RedLED extends GPIO
 }
 ```
 
-```$xslt
+```php
     public function index(GPIOManager $manager)
     {
         $redLED = new RedLED();
@@ -112,20 +112,20 @@ class RedLED extends GPIO
 
 Another method is to use the registerMode function to register the mode type for the manager so you can do something like this
 
-```$xslt
+```php
     $manager->create('red', 1, 'LED');
 ```
 Our GPIO config array in app/gpio.php [needs implementing]
-```$xslt
+```php
     'modes' => [
         'LED' => \App\GPIO\Modes\LED::class,
     ],
 ```
 
-###PWM functions
+### PWM functions
 
 In PWM GPIO I have added 2 function for incrementing and decrementing for and to values within an interval. 
-```$xslt
+```php
 $manager->redled = 0;
 $manager->redled->increment(1023, 200);
 //redled will 'fade' from 0 to 1023 
@@ -134,14 +134,14 @@ $manager->redled->increment(1023, 200);
 $manager->redled->decrement(0, 200);
 ```
 
-###Terminal functions
+### Terminal functions
 
 - `gpio:set redled 500` => set red LED to 500
 - `gpio:get sensor` => print the sensor reading
 - `gpio:list` => list all connections
 - `gpio:function redled increment 1023 1000` => call the increment function with the options
 
-##Available default modes 
+## Available default modes 
 
 - PWM => for incrementing the voltage between 0 and max
 - Awrite
@@ -150,7 +150,7 @@ $manager->redled->decrement(0, 200);
 - Read => for reading pins either OFF or ON 
 
 
-#Coming soon
+# Coming soon
 
 - Symfony bridge
 - Caching the manager to store the setup and previously set states (to prevent overriding previously set values)
