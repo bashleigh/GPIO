@@ -15,7 +15,7 @@ Installing into laravel
 
     ...
     
-    ChickenTikkaMasala\GPIO\Bridge\Laravel\GPIOServiceProvider::class,
+    \ChickenTikkaMasala\GPIO\Bridge\Laravel\GPIOServiceProvider::class,
     
     ...
     

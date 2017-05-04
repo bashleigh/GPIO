@@ -1,16 +1,16 @@
 <?php
 
-namespace ChickenTikkaMasla\GPIO;
-use ChickenTikkaMasla\GPIO\Exception\GPIOModeNotFound;
-use ChickenTikkaMasla\GPIO\Modes\Aread;
-use ChickenTikkaMasla\GPIO\Modes\Awrite;
-use ChickenTikkaMasla\GPIO\Modes\PWM;
-use ChickenTikkaMasla\GPIO\Modes\Read;
-use ChickenTikkaMasla\GPIO\Modes\Write;
+namespace ChickenTikkaMasala\GPIO;
+use ChickenTikkaMasala\GPIO\Exception\GPIOModeNotFound;
+use ChickenTikkaMasala\GPIO\Modes\Aread;
+use ChickenTikkaMasala\GPIO\Modes\Awrite;
+use ChickenTikkaMasala\GPIO\Modes\PWM;
+use ChickenTikkaMasala\GPIO\Modes\Read;
+use ChickenTikkaMasala\GPIO\Modes\Write;
 
 /**
  * Class PWMManager
- * @package ChickenTikkaMasla\GPIO
+ * @package ChickenTikkaMasala\GPIO
  */
 class GPIOManager
 {

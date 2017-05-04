@@ -1,12 +1,12 @@
 <?php
 
-namespace ChickenTikkaMasla\GPIO\Modes;
+namespace ChickenTikkaMasala\GPIO\Modes;
 
-use ChickenTikkaMasla\GPIO\GPIO;
+use ChickenTikkaMasala\GPIO\GPIO;
 
 /**
  * Class Aread
- * @package ChickenTikkaMasla\GPIO\Modes
+ * @package ChickenTikkaMasala\GPIO\Modes
  */
 class Aread extends GPIO
 {

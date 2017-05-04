@@ -1,13 +1,13 @@
 <?php
 
-namespace ChickenTikkaMasla\GPIO\Bridge\Laravel\Commands;
+namespace ChickenTikkaMasala\GPIO\Bridge\Laravel\Commands;
 
-use ChickenTikkaMasla\GPIO\GPIOManager;
+use ChickenTikkaMasala\GPIO\GPIOManager;
 use Illuminate\Console\Command;
 
 /**
  * Class GPIOManagerGet
- * @package ChickenTikkaMasla\GPIO\Bridge\Laravel\Commands
+ * @package ChickenTikkaMasala\GPIO\Bridge\Laravel\Commands
  */
 class GPIOManagerFunction extends Command
 {

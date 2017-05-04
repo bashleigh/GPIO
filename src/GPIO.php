@@ -1,10 +1,10 @@
 <?php
 
-namespace ChickenTikkaMasla\GPIO;
+namespace ChickenTikkaMasala\GPIO;
 
 /**
  * Class GPIO
- * @package ChickenTikkaMasla\GPIO
+ * @package ChickenTikkaMasala\GPIO
  */
 Abstract class GPIO
 {

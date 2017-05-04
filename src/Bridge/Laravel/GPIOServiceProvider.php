@@ -1,16 +1,16 @@
 <?php
 
-namespace ChickenTikkaMasla\GPIO\Bridge\Laravel;
+namespace ChickenTikkaMasala\GPIO\Bridge\Laravel;
 
-use ChickenTikkaMasla\GPIO\Bridge\Laravel\Commands\GPIOManagerFunction;
-use ChickenTikkaMasla\GPIO\Bridge\Laravel\Commands\GPIOManagerGet;
-use ChickenTikkaMasla\GPIO\Bridge\Laravel\Commands\GPIOManagerList;
-use ChickenTikkaMasla\GPIO\Bridge\Laravel\Commands\GPIOManagerSet;
-use ChickenTikkaMasla\GPIO\GPIOManager;
+use ChickenTikkaMasala\GPIO\Bridge\Laravel\Commands\GPIOManagerFunction;
+use ChickenTikkaMasala\GPIO\Bridge\Laravel\Commands\GPIOManagerGet;
+use ChickenTikkaMasala\GPIO\Bridge\Laravel\Commands\GPIOManagerList;
+use ChickenTikkaMasala\GPIO\Bridge\Laravel\Commands\GPIOManagerSet;
+use ChickenTikkaMasala\GPIO\GPIOManager;
 
 /**
  * Class GPIOServiceProvider
- * @package ChickenTikkaMasla\GPIO\Bridge\Laravel
+ * @package ChickenTikkaMasala\GPIO\Bridge\Laravel
  */
 class GPIOServiceProvider extends ServiceProvider
 {

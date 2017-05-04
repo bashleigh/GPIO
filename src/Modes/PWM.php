@@ -1,12 +1,12 @@
 <?php
 
-namespace ChickenTikkaMasla\GPIO\Modes;
+namespace ChickenTikkaMasala\GPIO\Modes;
 
-use ChickenTikkaMasla\GPIO\GPIO;
+use ChickenTikkaMasala\GPIO\GPIO;
 
 /**
  * Class PWM
- * @package ChickenTikkaMasla\GPIO\Modes
+ * @package ChickenTikkaMasala\GPIO\Modes
  */
 class PWM extends GPIO
 {

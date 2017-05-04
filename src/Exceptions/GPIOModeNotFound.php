@@ -1,12 +1,12 @@
 <?php
 
-namespace ChickenTikkaMasla\GPIO\Exception;
+namespace ChickenTikkaMasala\GPIO\Exception;
 
 use Throwable;
 
 /**
  * Class GPIOModeNotFound
- * @package ChickenTikkaMasla\GPIO\Exception
+ * @package ChickenTikkaMasala\GPIO\Exception
  */
 class GPIOModeNotFound extends \Exception
 {
