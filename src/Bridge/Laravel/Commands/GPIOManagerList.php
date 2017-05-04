@@ -18,10 +18,12 @@ class GPIOManagerList extends Command
     public $description = '';
 
     /**
-     *
+     * @param GPIOManager $GPIOManager
      */
     public function handle(GPIOManager $GPIOManager)
     {
-        $this->info($GPIOManager->getList());
+        foreach($GPIOManager->getList() as $name => $value) {
+            $this->info($name.': '.$value);
+        }
     }
 }

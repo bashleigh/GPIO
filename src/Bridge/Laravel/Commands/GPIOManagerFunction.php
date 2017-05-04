@@ -22,7 +22,7 @@ class GPIOManagerFunction extends Command
     public $description = '';
 
     /**
-     *
+     * @param GPIOManager $GPIOManager
      */
     public function handle(GPIOManager $GPIOManager)
     {
