@@ -22,8 +22,15 @@ class GPIOManagerList extends Command
      */
     public function handle(GPIOManager $GPIOManager)
     {
+        $values = [];
+
         foreach($GPIOManager->getList() as $name => $value) {
-            $this->info($name.': '.$value);
+            $values[] = [
+                'name' => $name,
+                'value' => $value,
+            ];
         }
+
+        $this->table(['Name', 'Previous Value'], $values);
     }
 }
