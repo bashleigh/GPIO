@@ -157,7 +157,7 @@ class GPIOManager
         $arr = [];
 
         foreach ($this->pins as $name => $pin) {
-            $arr[] = array_merge($pin->getDetails(), ['name' => $name]);
+            $arr[] = array_merge(['name' => $name], $pin->getDetails());
         }
 
         return $arr;
