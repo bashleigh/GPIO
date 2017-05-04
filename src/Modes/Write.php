@@ -17,7 +17,7 @@ class Write extends GPIO
     public function set($value = 0)
     {
         $this->lastValue = (int)($value >1) ? 1: (($value <1) ? 0 : $value);
-        return $this->write();
+        return $this->execute();
     }
 
     /**

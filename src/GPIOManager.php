@@ -49,7 +49,7 @@ class GPIOManager
                 throw new \Exception('Please add a pin for '.$name);
             }
 
-            call_user_func_array([$this, 'create'], [$data]);
+            call_user_func_array([$this, 'create'], array_merge(['name' => $name], $data));
         }
     }
 

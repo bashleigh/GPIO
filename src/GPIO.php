@@ -82,7 +82,7 @@ Abstract class GPIO
      */
     protected function getMode()
     {
-        return get_class(static::class);
+        return get_class($this);
     }
 
     abstract public function getMethod();

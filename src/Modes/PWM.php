@@ -33,7 +33,7 @@ class PWM extends GPIO
 
         while($i < $to) {
             $this->set($i);
-            delay($interval);
+            sleep($interval);
             $i++;
         }
         return true;
@@ -46,7 +46,7 @@ class PWM extends GPIO
 
         while($i > $to) {
             $this->set($i);
-            delay($interval);
+            sleep($interval);
             $i--;
         }
         return true;
