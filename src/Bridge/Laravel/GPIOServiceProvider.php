@@ -2,11 +2,10 @@
 
 namespace ChickenTikkaMasla\GPIO\Bridge\Laravel;
 
+use ChickenTikkaMasla\GPIO\Bridge\Laravel\Commands\GPIOManagerFunction;
 use ChickenTikkaMasla\GPIO\Bridge\Laravel\Commands\GPIOManagerGet;
 use ChickenTikkaMasla\GPIO\Bridge\Laravel\Commands\GPIOManagerSet;
 use ChickenTikkaMasla\GPIO\GPIOManager;
-
-class RiakServiceProvider extends ServiceProvider
 
 /**
  * Class GPIOServiceProvider
@@ -30,6 +29,7 @@ class GPIOServiceProvider extends ServiceProvider
         $this->commands([
             GPIOManagerGet::class,
             GPIOManagerSet::class,
+            GPIOManagerFunction::class,
         ]);
     }
 }
