@@ -127,7 +127,7 @@ Abstract class GPIO
      */
     protected function execute($read = false)
     {
-        $value = shell_exec('gpio ' . $this->mode . '  ' . $this->pin . ' ' . ($read) ? '' : $this->lastValue);
+        $value = shell_exec('gpio ' . $this->mode . '  ' . $this->pin . ' ' . (($read) ? '' : $this->lastValue));
 
         if (preg_match("/command\snot\sfound/", $value)) {
             throw new GPIOCommandNotFoundException();
