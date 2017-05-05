@@ -37,6 +37,7 @@ class GPIOManager
     /**
      * GPIOManager constructor.
      * @param array $pins
+     * @param array $options
      * @throws \Exception
      */
     public function __construct(Array $pins = [], Array $options = [])
@@ -90,9 +91,22 @@ class GPIOManager
         $this->add($name, new $this->modes[$mode]($pin, $defaultState, $options));
     }
 
+    /**
+     * @param $name
+     * @param GPIO $gpio
+     */
     public function add($name, GPIO $gpio)
     {
         $this->pins[$name] = $gpio;
+    }
+
+    /**
+     * @param $name
+     * @return mixed|null
+     */
+    public function get($name)
+    {
+        return $this->exists($name) ? $this->pins[$name] : null;
     }
 
     /**
@@ -102,6 +116,7 @@ class GPIOManager
     {
         if ($this->exists($name))
         {
+            $this->pins[$name]->__destruct();
             unset($this->pins[$name]);
         }
     }
@@ -152,6 +167,9 @@ class GPIOManager
         return $arr;
     }
 
+    /**
+     * @return array
+     */
     public function getDetailedList()
     {
         $arr = [];

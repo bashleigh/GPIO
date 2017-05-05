@@ -5,6 +5,7 @@ namespace ChickenTikkaMasala\GPIO\Bridge\Laravel;
 use ChickenTikkaMasala\GPIO\Bridge\Laravel\Commands\GPIOManagerFunction;
 use ChickenTikkaMasala\GPIO\Bridge\Laravel\Commands\GPIOManagerGet;
 use ChickenTikkaMasala\GPIO\Bridge\Laravel\Commands\GPIOManagerList;
+use ChickenTikkaMasala\GPIO\Bridge\Laravel\Commands\GPIOManagerListen;
 use ChickenTikkaMasala\GPIO\Bridge\Laravel\Commands\GPIOManagerSet;
 use ChickenTikkaMasala\GPIO\GPIOManager;
 
@@ -43,6 +44,7 @@ class GPIOServiceProvider extends ServiceProvider
             GPIOManagerSet::class,
             GPIOManagerFunction::class,
             GPIOManagerList::class,
+            GPIOManagerListen::class,
         ]);
     }
 }

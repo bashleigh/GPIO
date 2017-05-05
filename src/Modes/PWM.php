@@ -10,6 +10,8 @@ use ChickenTikkaMasala\GPIO\GPIO;
  */
 class PWM extends GPIO
 {
+    protected static $max = 1023;
+
     /**
      *
      */
@@ -26,6 +28,11 @@ class PWM extends GPIO
         return 'pwm';
     }
 
+    /**
+     * @param int $to
+     * @param int $interval
+     * @return bool
+     */
     public function increment($to = 1023, $interval = 200)
     {
         $i = $this->getPrevious();
@@ -39,6 +46,11 @@ class PWM extends GPIO
         return true;
     }
 
+    /**
+     * @param int $to
+     * @param int $interval
+     * @return bool
+     */
     public function decrement($to = 0, $interval = 200)
     {
         $i = $this->getPrevious();

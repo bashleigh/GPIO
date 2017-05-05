@@ -1,20 +1,20 @@
 <?php
 
-namespace ChickenTikkaMasala\GPIO\Bridge\Laravel\Commands;
+namespace ChickenTikkaMasla\GPIO\Bridge\Laravel\Commands;
 
-use ChickenTikkaMasala\GPIO\GPIOManager;
+use ChickenTikkaMasla\GPIO\GPIOManager;
 use Illuminate\Console\Command;
 
 /**
  * Class GPIOManagerGet
- * @package ChickenTikkaMasala\GPIO\Bridge\Laravel\Commands
+ * @package ChickenTikkaMasla\GPIO\Bridge\Laravel\Commands
  */
 class GPIOManagerFunction extends Command
 {
     /**
      * @var string
      */
-    public $signature = 'gpio:function {name} {function}';
+    public $signature = 'gpiomanager:function {name} {function}';
 
     /**
      * @var string

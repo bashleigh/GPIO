@@ -153,6 +153,39 @@ $manager->redled->decrement(0, 200);
 - Write => for writing to pins either OFF or ON (0v or max voltage)
 - Read => for reading pins either OFF or ON 
 
+## Value conversions 
+
+You may remember seeing (if you've ever used an arduino) values being set as HIGH or LOW. You can do this with the GPIO and depending on it's mode it will automatically fix your maximum value. 
+
+```php
+    //PWM all the below = 1023
+    $manager->redled = 'HIGH';
+    $manager->redled = 'UP';
+    $manager->redled = 'ON';
+    
+    //Where as for write and awrite: these equal to 1
+    $manager->redled = 'HIGH';
+    $manager->redled = 'UP';
+    $manager->redled = 'ON';
+    //all equal to 1
+    
+    //The below all equal to 0
+    $manager->redled = 'LOW';
+    $manager->redled = 'DOWN'
+    $manager->redled = 'OFF';
+```
+
+## Getting the GPIO class out of the manager
+
+You can get the class out of the manager if you wish using 
+
+```php
+    $redled = $manager->get('redled');
+    
+    //if you wanted to put it back simply use the add function again
+    
+    $manager->add('redled', $redled);
+```
 
 # Coming soon
 

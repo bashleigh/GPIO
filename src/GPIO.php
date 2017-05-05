@@ -23,7 +23,7 @@ Abstract class GPIO
     /**
      * @var int
      */
-    protected static $max = 1023;
+    protected static $max = 1;
 
     /**
      * @var array
@@ -113,8 +113,8 @@ Abstract class GPIO
      */
     public function set($value = 0)
     {
-        if (strtoupper($value) == 'ON') $value = self::$max;
-        if (strtoupper($value) == 'OFF') $value = 0;
+        if (strtoupper($value) == 'ON' || strtoupper($value) == 'HIGH' || strtoupper($value) == 'UP') $value = static::$max;
+        if (strtoupper($value) == 'OFF' || strtoupper($value) == 'LOW' || strtoupper($value) == 'DOWN') $value = 0;
 
         $this->lastValue = $value;
         return $this->execute();
@@ -129,6 +129,7 @@ Abstract class GPIO
     {
         $value = shell_exec('gpio ' . $this->mode . '  ' . $this->pin . ' ' . (($read) ? '' : $this->lastValue));
 
+        /** this doesn't work */
         if (preg_match("/command\snot\sfound/", $value)) {
             throw new GPIOCommandNotFoundException();
         }
@@ -145,6 +146,7 @@ Abstract class GPIO
     {
         $value = shell_exec('gpio '.implode(' ', $this->options).' mode '.$this->pin.' '.$this->method);
 
+        /** this doesn't work */
         if (preg_match("/command\snot\sfound/", $value)) {
             throw new GPIOCommandNotFoundException();
         }
@@ -152,6 +154,9 @@ Abstract class GPIO
         return $value;
     }
 
+    /**
+     * @return array
+     */
     public function getDetails()
     {
         return [
@@ -169,6 +174,9 @@ Abstract class GPIO
         $this->set();
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return (string)$this->lastValue;
