@@ -33,6 +33,7 @@ class GPIOManagerList extends Command
             'Mode',
             'Method',
             'Previous Value',
+            'Class',
             'Options',
             ], $GPIOManager->getDetailedList());
     }

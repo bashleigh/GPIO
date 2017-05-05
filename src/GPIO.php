@@ -84,7 +84,9 @@ Abstract class GPIO
      */
     protected function getMode()
     {
-        return get_class($this);
+        $class = explode("\\", get_class($this));
+        $class = end($class);
+        return strtolower($class);
     }
 
     abstract public function getMethod();
@@ -157,6 +159,7 @@ Abstract class GPIO
             'mode' => $this->mode,
             'method' => $this->method,
             'value' => $this->getPrevious(),
+            'class' => get_class($this),
             'options' => implode(', ', $this->options),
         ];
     }

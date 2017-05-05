@@ -23,7 +23,7 @@ class PWM extends GPIO
      */
     public function getMethod()
     {
-        return 'out';
+        return 'pwm';
     }
 
     public function increment($to = 1023, $interval = 200)
