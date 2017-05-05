@@ -5,6 +5,10 @@ namespace ChickenTikkaMasala\GPIO\Bridge\Laravel\Commands;
 use ChickenTikkaMasala\GPIO\GPIOManager;
 use Illuminate\Console\Command;
 
+/**
+ * Class GPIOManagerList
+ * @package ChickenTikkaMasala\GPIO\Bridge\Laravel\Commands
+ */
 class GPIOManagerList extends Command
 {
     /**

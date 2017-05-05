@@ -8,6 +8,10 @@ The GPIO manager comes with a Laravel bridged service provider for easy integrat
 
 The GPIO class requires gpio to be installed 
 
+```bash
+apt-get install gpio
+```
+
 Installing into laravel 
 
 ```php
@@ -76,7 +80,7 @@ The manager maps your named connections as parameters as shown above. When readi
 
 Mapping also applies to the values 'OFF' and 'ON' where PWM expects 1023 as max and write expect 1. 'OFF' will equal to 0.
 
-### Custom GPIO classes 
+### Custom GPIO Classes/Modes
 
 You can however add your own GPIO modes/classes in 2 ways. 
 
@@ -123,7 +127,7 @@ Our GPIO config array in app/gpio.php
 
 ### PWM functions
 
-In PWM GPIO I have added 2 function for incrementing and decrementing for and to values within an interval. 
+In PWM GPIO I have added 2 function for incrementing and decrementing for incrementing/decrementing to a value within an interval. 
 ```php
 $manager->redled = 0;
 $manager->redled->increment(1023, 200);
@@ -139,6 +143,7 @@ $manager->redled->decrement(0, 200);
 - `gpio:get sensor` => print the sensor reading
 - `gpio:list` => list all connections
 - `gpio:function redled increment 1023 1000` => call the increment function with the options (options needs implementing)
+- `gpio:listen sensor --onChange` => prints the state of the sensor (onChange option to only print if value has changed else consistently print incoming value)
 
 ## Available default modes 
 
@@ -154,3 +159,5 @@ $manager->redled->decrement(0, 200);
 - Symfony bridge
 - Caching the manager to store the setup and previously set states (to prevent overriding previously set values)
 - Value managing (preventing > 1023 readings and writings)
+- mapping values from 'low' to 'high' (for ESCs for example a pwm value of 60 is 0. For servos we may want to map 0 - 1023 to something like 0 - 180 degrees where a 'high' of 1023 = 180 degrees)
+- exceptions for command errors
