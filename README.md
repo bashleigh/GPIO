@@ -83,7 +83,6 @@ You can however add your own GPIO modes/classes in 2 ways.
 First being 
 
 ```php
-<?php 
 
 use ChickenTikkaMasala\GPIO\GPIO;
 
@@ -115,7 +114,7 @@ Another method is to use the registerMode function to register the mode type for
 ```php
     $manager->create('red', 1, 'LED');
 ```
-Our GPIO config array in app/gpio.php [needs implementing]
+Our GPIO config array in app/gpio.php
 ```php
     'modes' => [
         'LED' => \App\GPIO\Modes\LED::class,
@@ -139,7 +138,7 @@ $manager->redled->decrement(0, 200);
 - `gpio:set redled 500` => set red LED to 500
 - `gpio:get sensor` => print the sensor reading
 - `gpio:list` => list all connections
-- `gpio:function redled increment 1023 1000` => call the increment function with the options
+- `gpio:function redled increment 1023 1000` => call the increment function with the options (options needs implementing)
 
 ## Available default modes 
 
