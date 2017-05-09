@@ -19,7 +19,7 @@ class GPIOManagerList extends Command
     /**
      * @var string
      */
-    public $description = '';
+    public $description = 'List the current hardware layout setup';
 
     /**
      * @param GPIOManager $GPIOManager

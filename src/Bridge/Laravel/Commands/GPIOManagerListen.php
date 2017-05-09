@@ -19,7 +19,7 @@ class GPIOManagerListen extends Command
     /**
      * @var string
      */
-    public $description = '';
+    public $description = 'Listen to a particular pin';
 
     /**
      * @var null

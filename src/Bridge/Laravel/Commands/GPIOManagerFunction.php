@@ -19,7 +19,7 @@ class GPIOManagerFunction extends Command
     /**
      * @var string
      */
-    public $description = '';
+    public $description = 'Call a function in a GPIO mode';
 
     /**
      * @param GPIOManager $GPIOManager

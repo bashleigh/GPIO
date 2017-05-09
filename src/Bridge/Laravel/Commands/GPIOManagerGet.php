@@ -19,7 +19,7 @@ class GPIOManagerGet extends Command
     /**
      * @var string
      */
-    public $description = '';
+    public $description = 'Get a value from a parameter on the GPIO manager';
 
     /**
      * @param GPIOManager $GPIOManager

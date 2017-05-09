@@ -19,7 +19,7 @@ class GPIOManagerSet extends Command
     /**
      * @var string
      */
-    public $description = '';
+    public $description = 'Set a particular parameter with a value';
 
     /**
      * @param GPIOManager $GPIOManager
