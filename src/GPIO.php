@@ -182,4 +182,20 @@ Abstract class GPIO
         return (string)$this->lastValue;
     }
 
+    /**
+     * @return int
+     */
+    public function getPin()
+    {
+        return $this->pin;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMaxValue()
+    {
+        return static::$max;
+    }
+
 }

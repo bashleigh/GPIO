@@ -8,8 +8,8 @@ use ChickenTikkaMasala\GPIO\Bridge\Laravel\Commands\GPIOManagerList;
 use ChickenTikkaMasala\GPIO\Bridge\Laravel\Commands\GPIOManagerListen;
 use ChickenTikkaMasala\GPIO\Bridge\Laravel\Commands\GPIOManagerSet;
 use ChickenTikkaMasala\GPIO\GPIOManager;
-
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Cache;
 
 /**
  * Class GPIOServiceProvider
@@ -17,9 +17,15 @@ use Illuminate\Support\ServiceProvider;
  */
 class GPIOServiceProvider extends ServiceProvider
 {
+    const CACHE_NAME = 'GPIOManager';
+
     public function register()
     {
         $this->app->singleton(GPIOManager::class, function($app) {
+
+            if (Cache::has(self::CACHE_NAME)) {
+                return Cache::get(self::CACHE_NAME);
+            }
 
             $manager = new GPIOManager(config('gpio.pins'), config('gpio.settings'));
 
@@ -28,6 +34,8 @@ class GPIOServiceProvider extends ServiceProvider
                     $manager->registerMode($name, $mode);
                 }
             }
+
+            Cache::forever(self::CACHE_NAME, $manager);
 
             return $manager;
         });
