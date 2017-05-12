@@ -17,7 +17,7 @@ class GPIOManager
     /**
      * @var array
      */
-    public $pins = [];
+    protected $pins = [];
 
     /**
      * @var array

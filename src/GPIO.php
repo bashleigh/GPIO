@@ -26,6 +26,11 @@ Abstract class GPIO
     protected static $max = 1;
 
     /**
+     * @var int
+     */
+    protected static $min = 0;
+
+    /**
      * @var array
      */
     protected $options = [];
@@ -80,41 +85,16 @@ Abstract class GPIO
     }
 
     /**
-     * @return string
-     */
-    protected function getMode()
-    {
-        $class = explode("\\", get_class($this));
-        $class = end($class);
-        return strtolower($class);
-    }
-
-    abstract public function getMethod();
-
-    /**
-     * @return int
-     */
-    public function getPrevious()
-    {
-        return $this->lastValue;
-    }
-
-    /**
-     * @return string
-     */
-    public function get()
-    {
-        return $this->lastValue = $this->execute(true);
-    }
-
-    /**
      * @param int $value
      * @return string
      */
     public function set($value = 0)
     {
         if (strtoupper($value) == 'ON' || strtoupper($value) == 'HIGH' || strtoupper($value) == 'UP') $value = static::$max;
-        if (strtoupper($value) == 'OFF' || strtoupper($value) == 'LOW' || strtoupper($value) == 'DOWN') $value = 0;
+        if (strtoupper($value) == 'OFF' || strtoupper($value) == 'LOW' || strtoupper($value) == 'DOWN') $value = static::$min;
+
+        if ($value > static::$max) $value = static::$max;
+        if ($value < static::$min) $value = static::$min;
 
         $this->lastValue = $value;
         return $this->execute();
@@ -196,6 +176,42 @@ Abstract class GPIO
     public function getMaxValue()
     {
         return static::$max;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMinimum()
+    {
+        return static::$min;
+    }
+
+    /**
+     * @return string
+     */
+    protected function getMode()
+    {
+        $class = explode("\\", get_class($this));
+        $class = end($class);
+        return strtolower($class);
+    }
+
+    abstract public function getMethod();
+
+    /**
+     * @return int
+     */
+    public function getPrevious()
+    {
+        return $this->lastValue;
+    }
+
+    /**
+     * @return string
+     */
+    public function get()
+    {
+        return $this->lastValue = $this->execute(true);
     }
 
 }
