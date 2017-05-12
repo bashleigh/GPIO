@@ -7,7 +7,7 @@ use ChickenTikkaMasala\GPIO\Bridge\Laravel\Commands\GPIOManagerList;
 use ChickenTikkaMasala\GPIO\Bridge\Laravel\Commands\GPIOManagerListen;
 use ChickenTikkaMasala\GPIO\Bridge\Laravel\Commands\GPIOManagerSet;
 use ChickenTikkaMasala\GPIO\GPIOManager;
-use ChickenTikkaMasla\GPIO\Bridge\Laravel\Commands\GPIOManagerFunction;
+use ChickenTikkaMasala\GPIO\Bridge\Laravel\Commands\GPIOManagerFunction;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Cache;
 

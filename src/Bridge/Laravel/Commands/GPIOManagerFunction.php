@@ -1,6 +1,6 @@
 <?php
 
-namespace ChickenTikkaMasla\GPIO\Bridge\Laravel\Commands;
+namespace ChickenTikkaMasala\GPIO\Bridge\Laravel\Commands;
 
 use ChickenTikkaMasla\GPIO\GPIOManager;
 use Illuminate\Console\Command;
