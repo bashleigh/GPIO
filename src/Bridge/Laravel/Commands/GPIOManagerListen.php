@@ -27,16 +27,14 @@ class GPIOManagerListen extends Command
     protected $previousValue = null;
 
     /**
-     * GPIOManagerListen constructor.
-     * @param GPIOManager $GPIOManager
+     * @var GPIOManager
      */
-    public function __construct(GPIOManager $GPIOManager)
+    private $GPIOManager;
+
+
+    public function handle(GPIOManager $GPIOManager)
     {
         $this->GPIOManager = $GPIOManager;
-    }
-
-    public function handle()
-    {
         ($this->getOption('onChange')) ? $this->onChange() : $this->consistent();
     }
 
