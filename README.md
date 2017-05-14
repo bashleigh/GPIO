@@ -26,6 +26,15 @@ Installing into laravel
 ];
 ```
 
+Add the event listener to your Event Service Provider 
+
+```php
+$subscribe = [
+    \ChickenTikkaMasala\GPIO\Bridge\Laravel\Events\EventSubscriber::class,
+];
+```
+The above is for recaching the GPIO manager after a request to prevent redeclaration of the manager and resetting everything to their default value
+
 Publish the vendor to get the config files
 
 ```bash
@@ -65,7 +74,7 @@ Alternatively to config setup you can call the create function to add new connec
     }
 ```
 
-The manager maps your named connections as parameters as shown above. When reading pins we canuse the same method with the parameters to get the result 
+The manager maps your named connections as parameters as shown above. When reading pins we can use the same method with the parameters to get the result 
 
 ```php
     public function index(GPIOManager $manager)
@@ -190,7 +199,5 @@ You can get the class out of the manager if you wish using
 # Coming soon
 
 - Symfony bridge
-- Caching the manager to store the setup and previously set states (to prevent overriding previously set values)
-- Value managing (preventing > 1023 readings and writings)
 - mapping values from 'low' to 'high' (for ESCs for example a pwm value of 60 is 0. For servos we may want to map 0 - 1023 to something like 0 - 180 degrees where a 'high' of 1023 = 180 degrees)
 - exceptions for command errors
