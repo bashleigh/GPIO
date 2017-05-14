@@ -31,9 +31,6 @@ class EventSubscriber
      */
     public function updateCache(RequestHandled $requestHandled)
     {
-        dd($requestHandled);
-
-        dd('hi');
-        Cache::forever(GPIOServiceProvider::CACHE_NAME, $GPIOManager);
+        Cache::forever(GPIOServiceProvider::CACHE_NAME, resolve(GPIOManager::class));
     }
 }
