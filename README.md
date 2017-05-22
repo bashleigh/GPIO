@@ -134,18 +134,6 @@ Our GPIO config array in app/gpio.php
     ],
 ```
 
-### PWM functions
-
-In PWM GPIO I have added 2 function for incrementing and decrementing for incrementing/decrementing to a value within an interval. 
-```php
-$manager->redled = 0;
-$manager->redled->increment(1023, 200);
-//redled will 'fade' from 0 to 1023 
-//increment will increase every 200th millisecond
-
-$manager->redled->decrement(0, 200);
-```
-
 ### Terminal functions
 
 - `gpio:set redled 500` => set red LED to 500
@@ -194,6 +182,21 @@ You can get the class out of the manager if you wish using
     //if you wanted to put it back simply use the add function again
     
     $manager->add('redled', $redled);
+```
+
+
+### PWM functions
+
+In PWM GPIO I have added 2 function for incrementing and decrementing for incrementing/decrementing to a value within an interval.
+```php
+$redled = $manager->get('redled');
+$redled->increment(1023, 200);
+//redled will 'fade' from 0 to 1023 
+//increment will increase every 200th millisecond
+
+$redled->decrement(0, 200);
+
+$manager->add('redled', $redled);
 ```
 
 # Coming soon
