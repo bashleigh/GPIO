@@ -33,7 +33,9 @@ $subscribe = [
     \ChickenTikkaMasala\GPIO\Bridge\Laravel\Events\EventSubscriber::class,
 ];
 ```
-The above is for recaching the GPIO manager after a request to prevent redeclaration of the manager and resetting everything to their default value
+The above is for recaching the GPIO manager after a request to prevent redeclaration of the manager and resetting everything to their default value. 
+
+> If you run your application and alter your environment setup, you may want to run `php artisan cache:clear` to clear the cached setup.
 
 Publish the vendor to get the config files
 
@@ -215,6 +217,17 @@ If you see http://wiringpi.com/the-gpio-utility/ there is a usage section. These
 ```
 
 An extremely handy pin map https://pinout.xyz/
+
+### Default GPIO value
+```php
+    'pins' => [
+        'redled' => [
+            'pin' => 18,
+            'mode' => 'pwm',
+            'defaultValue' => 1023,//turn pin on full on boot of application 
+        ],
+    ],
+```
 
 # Coming soon
 
