@@ -214,7 +214,7 @@ If you see http://wiringpi.com/the-gpio-utility/ there is a usage section. These
     ],
 ```
 
-An extremely hand pin map https://pinout.xyz/
+An extremely handy pin map https://pinout.xyz/
 
 # Coming soon
 
