@@ -199,6 +199,23 @@ $redled->decrement(0, 200);
 $manager->add('redled', $redled);
 ```
 
+### GPIO Options 
+If you see http://wiringpi.com/the-gpio-utility/ there is a usage section. These options are available to pass to the GPIOManager like so (example to use BCM pins):
+
+```php
+    'pins' => [
+        'redled' => [
+            'pin' => 18, //wiring pi pin 1 = BCM pin 18
+            'mode' => 'pwm',
+            'options' => [
+                '-g',
+            ],
+        ],
+    ],
+```
+
+An extremely hand pin map https://pinout.xyz/
+
 # Coming soon
 
 - Symfony bridge
