@@ -1,4 +1,5 @@
-# GPIO manager
+GPIO manager
+===
 
 > requires testing
 
@@ -12,7 +13,12 @@ The GPIO class requires gpio to be installed
 apt-get install gpio
 ```
 
-Installing into laravel 
+## Installing into laravel 
+Add the package to your application via composer
+
+```bash
+composer require chickentikkamasala/gpio
+```
 
 ```php
 'providers' => [
