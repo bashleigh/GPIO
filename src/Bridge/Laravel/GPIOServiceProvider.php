@@ -27,10 +27,10 @@ class GPIOServiceProvider extends ServiceProvider
                 return Cache::get(self::CACHE_NAME);
             }
 
-            $manager = new GPIOManager(config('gpio.pins'), config('gpio.settings'));
+            $manager = new GPIOManager(config('gpio.pins', []), config('gpio.settings', []));
 
-            if(!empty(config('gpio.modes'))) {
-                foreach(config('gpio.modes') as $name => $mode) {
+            if(!empty(config('gpio.modes', []))) {
+                foreach(config('gpio.modes', []) as $name => $mode) {
                     $manager->registerMode($name, $mode);
                 }
             }
